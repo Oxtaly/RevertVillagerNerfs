@@ -1,5 +1,6 @@
 package com.oxtaly.revertvillagernerfs.mixin;
 
+import com.oxtaly.revertvillagernerfs.Config;
 import net.minecraft.world.entity.ai.gossip.GossipType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,7 +30,7 @@ public abstract class GossipTypeMixin {
             argsOnly = true
     )
     private static int modifyDecayPerTransfer(int decayPerTransfer) {
-        if(currentKey.equalsIgnoreCase("MAJOR_POSITIVE")) {
+        if(Config.REVERT_CURING_STACKING.isTrue() && currentKey.equalsIgnoreCase("MAJOR_POSITIVE")) {
             return 100;
         }
         return decayPerTransfer;
@@ -41,10 +42,12 @@ public abstract class GossipTypeMixin {
             argsOnly = true
     )
     private static int modifyMax(int max) {
-        if(currentKey.equalsIgnoreCase("MAJOR_POSITIVE")) {
-            return 100;
-        } else if (currentKey.equalsIgnoreCase("MINOR_POSITIVE")) {
-            return 200;
+        if(Config.REVERT_CURING_STACKING.isTrue()) {
+            if(currentKey.equalsIgnoreCase("MAJOR_POSITIVE")) {
+                return 100;
+            } else if (currentKey.equalsIgnoreCase("MINOR_POSITIVE")) {
+                return 200;
+            }
         }
         return max;
     }
