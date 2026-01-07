@@ -1,6 +1,5 @@
 package com.oxtaly.revertvillagernerfs.mixin;
 
-import com.oxtaly.revertvillagernerfs.RevertVillagerNerfs;
 import net.minecraft.world.entity.ai.gossip.GossipType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
