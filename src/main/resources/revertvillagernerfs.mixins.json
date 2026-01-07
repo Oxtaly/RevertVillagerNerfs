@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.oxtaly.revertvillagernerfs.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "GossipTypeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
